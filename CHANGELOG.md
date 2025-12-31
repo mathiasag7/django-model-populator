@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Foreign key relationship handling
 - OneToOne relationship handling
 - ManyToMany relationship handling
-- Management command `fakes` for generating data
+- Management command `populate` for generating data
 - Command options: `--all`, `--models`, `--num`, `--m2m`
 - Progress bars with tqdm integration
 - Safe unique field handling
@@ -46,4 +46,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[0.1.0]: https://github.com/yourusername/django-fake-filler/releases/tag/v0.1.0
+[0.1.0]: https://github.com/mathiasag7/django_model_populator/releases/tag/v0.1.0

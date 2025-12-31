@@ -16,7 +16,7 @@ A Django application for automatically generating fake/dummy data for your Djang
 Install from PyPI:
 
 ```bash
-pip install django-fake-filler
+pip install django_model_populator
 ```
 
 Add to your Django project's `INSTALLED_APPS`:
@@ -24,7 +24,7 @@ Add to your Django project's `INSTALLED_APPS`:
 ```python
 INSTALLED_APPS = [
     # ... other apps
-    'fake_filler',
+    'model_populator',
 ]
 ```
 
@@ -33,25 +33,25 @@ INSTALLED_APPS = [
 ### Generate Fake Data for All Models
 
 ```bash
-python manage.py fakes --all --num 10
+python manage.py populate --all --num 10
 ```
 
 ### Generate Data for Specific App
 
 ```bash
-python manage.py fakes myapp --num 20
+python manage.py populate myapp --num 20
 ```
 
 ### Generate Data for Specific Models
 
 ```bash
-python manage.py fakes myapp --models Author Book --num 15
+python manage.py populate myapp --models Author Book --num 15
 ```
 
 ### Control ManyToMany Relationships
 
 ```bash
-python manage.py fakes myapp --num 10 --m2m 5
+python manage.py populate myapp --num 10 --m2m 5
 ```
 
 ## Usage Examples
@@ -60,28 +60,28 @@ python manage.py fakes myapp --num 10 --m2m 5
 
 ```bash
 # Generate 10 fake records for all models in the "books" app
-python manage.py fakes books --num 10
+python manage.py populate books --num 10
 ```
 
 ### Multiple Apps
 
 ```bash
 # Generate fake data for multiple apps
-python manage.py fakes books authors publishers --num 25
+python manage.py populate books authors publishers --num 25
 ```
 
 ### Specific Models
 
 ```bash
 # Generate fake data only for Author and Book models
-python manage.py fakes books --models Author Book --num 50
+python manage.py populate books --models Author Book --num 50
 ```
 
 ### With ManyToMany Relations
 
 ```bash
 # Generate 20 records with 5 related objects for each ManyToMany field
-python manage.py fakes books --num 20 --m2m 5
+python manage.py populate books --num 20 --m2m 5
 ```
 
 ## Command Options
@@ -127,7 +127,7 @@ The package also maps Django field types to appropriate fake data:
 
 ## Configuration
 
-You can customize the fake data generation by modifying `fake_filler/field_mappings.py`:
+You can customize the fake data generation by modifying `model_populator/field_mappings.py`:
 
 ### Exclude Apps or Models
 
@@ -173,21 +173,21 @@ FIELD_NAME_MAPPING = {
 
 ```bash
 # Generate products, categories, and orders
-python manage.py fakes shop --models Category Product Order --num 100 --m2m 3
+python manage.py populate shop --models Category Product Order --num 100 --m2m 3
 ```
 
 ### Blog Application
 
 ```bash
 # Generate authors, posts, and comments
-python manage.py fakes blog --num 50
+python manage.py populate blog --num 50
 ```
 
 ### User Management
 
 ```bash
 # Generate user profiles with related data
-python manage.py fakes accounts --models Profile --num 200
+python manage.py populate accounts --models Profile --num 200
 ```
 
 ## Troubleshooting
@@ -207,7 +207,41 @@ If related objects aren't being created:
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
+- Setting up the development environment
+- Running tests
+- Submitting pull requests
+- Code style guidelines
+
+> **💡 Fast Setup**: We recommend using [uv](https://github.com/astral-sh/uv) for 10-100x faster package installation. See our [uv Guide](UV_GUIDE.md) for details.
+
+### Quick Start for Contributors
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_ORG/django_model_populator.git
+cd django_model_populator
+
+# Set up development environment (choose one):
+
+# Option 1: Using uv (fastest - recommended)
+uv venv && source .venv/bin/activate
+uv pip install -r requirements.txt
+
+# Option 2: Using venv
+python -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+
+# Run migrations and tests
+python manage.py migrate
+python manage.py test
+
+# Try the example app
+python manage.py populate books --num 10
+```
+
+See [TESTING.md](TESTING.md) for comprehensive testing documentation. Please feel free to submit a Pull Request.
 
 ## License
 
@@ -219,9 +253,9 @@ Mathias AG <mathiasag07@gmail.com>
 
 ## Links
 
-- PyPI: https://pypi.org/project/django-fake-filler/
-- GitHub: https://github.com/mathiasag7/django-fake-filler
-- Issues: https://github.com/mathiasag7/django-fake-filler/issues
+- PyPI: https://pypi.org/project/django_model_populator/
+- GitHub: https://github.com/mathiasag7/django_model_populator
+- Issues: https://github.com/mathiasag7/django_model_populator/issues
 
 ## Changelog
 

@@ -6,7 +6,9 @@ from model_populator.engine import generate_model_fakes
 def get_model_labels(self, options: dict) -> list:
     if model_names := options["models"]:
         app_config = apps.get_app_config(options["apps"][0])
-        return [model for model in app_config.get_models() if model._meta.model_name in model_names]
+        # Convert model names to lowercase for comparison
+        model_names_lower = [name.lower() for name in model_names]
+        return [model for model in app_config.get_models() if model._meta.model_name in model_names_lower]
     elif app_labels := options["apps"]:
         model_labels: list = []
         for app_label in app_labels:
