@@ -1,0 +1,87 @@
+[project]
+name = "django-model-populator"
+version = "0.1.0"
+description = "A Django application for automatically populating your database with fake/dummy data"
+readme = "README.md"
+authors = [
+    { name = "Mathias AG", email = "mathiasag07@gmail.com" }
+]
+license = { text = "MIT" }
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Framework :: Django :: 5.1",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Utilities",
+]
+keywords = [
+    "django",
+    "fake",
+    "faker",
+    "dummy-data",
+    "test-data",
+    "fixtures",
+    "testing",
+    "development",
+    "database",
+    "population",
+    "model",
+    "populator"
+]
+requires-python = ">=3.9"
+dependencies = [
+    "django>=4.2",
+    "faker>=37.0.0",
+    "tqdm>=4.67.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "django-extensions>=4.1",
+    "black>=25.0",
+    "pytest>=7.0",
+    "pytest-django>=4.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/mathiasag7/django-model-populator"
+Documentation = "https://github.com/mathiasag7/django-model-populator#readme"
+Repository = "https://github.com/mathiasag7/django-model-populator"
+"Bug Tracker" = "https://github.com/mathiasag7/django-model-populator/issues"
+Changelog = "https://github.com/mathiasag7/django-model-populator/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["model_populator", "model_populator.management", "model_populator.management.commands"]
+
+[tool.setuptools.package-data]
+model_populator = ["*.py"]
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "django_model_populator.settings"
+python_files = ["tests.py", "test_*.py"]

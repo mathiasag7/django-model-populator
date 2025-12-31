@@ -1,0 +1,4 @@
+black==25.1.0
+django==5.2.4
+django-extensions==4.1
+ipython==9.4.0
