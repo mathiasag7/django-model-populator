@@ -2,6 +2,19 @@
 
 A Django application for automatically generating fake/dummy data for your Django models using the Faker library.
 
+## The Story
+This project was born from a very practical problem encountered while testing Django applications.
+
+When generating test data, related objects were often recreated every time they were needed. Creating a book would automatically create a new author, even when an author already existed. Over time, this led to unrealistic databases filled with duplicated data and relationships that don’t reflect how real systems work
+
+We wanted to create a tool that generates data mirroring real-world patterns.
+
+## Built With Gratitude
+
+This project stands on the shoulders of giants. Special thanks to:
+
+**[Faker](https://github.com/joke2k/faker)** by Daniele Faraglia - The incredible Python library that powers all our fake data generation. Without Faker's comprehensive providers and localization support, this project wouldn't exist. 🙏
+
 ## Features
 
 - 🎯 **Automatic Data Generation**: Intelligently generates fake data based on field names and types
@@ -129,6 +142,22 @@ The package also maps Django field types to appropriate fake data:
 
 You can customize the fake data generation by modifying `model_populator/field_mappings.py`:
 
+### Control Related Object Creation
+
+**The Smart Default** - Reuses existing related objects instead of creating duplicates:
+
+```python
+# In your Django settings.py
+AUTO_CREATE_RELATED_MODELS = True  # Default behavior
+
+# When generating 100 books:
+# - Creates a few authors/publishers first
+# - Reuses them across books (realistic!)
+# - Result: 100 books share ~20 authors and ~15 publishers
+```
+
+This is what makes our data realistic - just like in the real world where Stephen King has written dozens of books, not one book per author!
+
 ### Exclude Apps or Models
 
 ```python
@@ -242,6 +271,22 @@ python manage.py populate books --num 10
 ```
 
 See [TESTING.md](TESTING.md) for comprehensive testing documentation. Please feel free to submit a Pull Request.
+
+## Credits & Acknowledgments
+
+This project would not be possible without:
+
+### [Faker](https://github.com/joke2k/faker)
+The amazing Python library by **Daniele Faraglia** and contributors that powers all our fake data generation. Faker provides hundreds of data providers across multiple locales, making realistic test data generation a breeze.
+
+- **Repository**: https://github.com/joke2k/faker
+- **Documentation**: https://faker.readthedocs.io/
+- **License**: MIT
+
+**Thank you to the Faker team** for creating such a versatile and well-maintained library! 🎉
+
+### Community
+Thanks to all contributors who help improve this project and make Django development easier for everyone.
 
 ## License
 
