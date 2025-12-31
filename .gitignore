@@ -113,15 +113,7 @@ db.sqlite3
 *.sqlite
 *.sqlite3
 
-# Test Django project files (not part of the package)
-books/
-django_model_populator/
-manage.py
-shell_plus.ipynb
-main.py
-justfile
-requirements.txt
-.python-version
+# Lock files
 uv.lock
 
 # IDE
